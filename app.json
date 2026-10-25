@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/wishlist/index",
+    "pages/trends/index",
+    "pages/settings/index",
+    "pages/detail/index",
+    "pages/edit/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F5F5F7",
+    "navigationBarTitleText": "格物 AssetLife",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F5F7",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8A8A8A",
+    "selectedColor": "#4E7D12",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "资产",
+        "iconPath": "assets/tabs/assets.png",
+        "selectedIconPath": "assets/tabs/assets_active.png"
+      },
+      {
+        "pagePath": "pages/wishlist/index",
+        "text": "心愿",
+        "iconPath": "assets/tabs/wishlist.png",
+        "selectedIconPath": "assets/tabs/wishlist_active.png"
+      },
+      {
+        "pagePath": "pages/trends/index",
+        "text": "趋势",
+        "iconPath": "assets/tabs/trends.png",
+        "selectedIconPath": "assets/tabs/trends_active.png"
+      },
+      {
+        "pagePath": "pages/settings/index",
+        "text": "设置",
+        "iconPath": "assets/tabs/settings.png",
+        "selectedIconPath": "assets/tabs/settings_active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

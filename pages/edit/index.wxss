@@ -1,0 +1,16 @@
+.error-card {
+  border-color: rgba(199, 74, 74, 0.4);
+  margin-bottom: 22rpx;
+}
+.error-line {
+  color: #C74A4A;
+  font-size: 24rpx;
+  line-height: 1.7;
+}
+.notes {
+  min-height: 120rpx;
+  width: auto;
+}
+.save-area {
+  margin: 34rpx 8rpx 60rpx;
+}

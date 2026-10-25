@@ -1,0 +1,74 @@
+.stat-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #8A8A8A;
+  margin-bottom: 22rpx;
+}
+.demo-badge {
+  font-size: 20rpx;
+  color: #8A5EA8;
+  background: rgba(138, 94, 168, 0.14);
+  border-radius: 999rpx;
+  padding: 4rpx 14rpx;
+}
+.btn-block {
+  margin-bottom: 18rpx;
+}
+.btn-block:last-child {
+  margin-bottom: 0;
+}
+.demo-note {
+  font-size: 22rpx;
+  color: #8A8A8A;
+  margin-bottom: 18rpx;
+}
+.glossary-item {
+  display: flex;
+  margin-bottom: 18rpx;
+  font-size: 23rpx;
+  line-height: 1.6;
+}
+.glossary-item:last-child {
+  margin-bottom: 0;
+}
+.glossary-key {
+  color: #4E7D12;
+  font-weight: 600;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+.import-box {
+  margin-top: 22rpx;
+  padding-top: 22rpx;
+  border-top: 1rpx solid #EFEFEF;
+}
+.import-hint {
+  font-size: 22rpx;
+  line-height: 1.6;
+  margin-bottom: 14rpx;
+}
+.import-area {
+  width: 100%;
+  box-sizing: border-box;
+  height: 240rpx;
+  background: #F5F5F7;
+  border-radius: 14rpx;
+  padding: 18rpx;
+  font-size: 22rpx;
+  line-height: 1.5;
+  margin-bottom: 18rpx;
+}
+.about {
+  text-align: center;
+  padding: 44rpx 0 20rpx;
+}
+.about-title {
+  font-size: 28rpx;
+  font-weight: 700;
+}
+.about-sub {
+  font-size: 21rpx;
+  margin-top: 8rpx;
+}

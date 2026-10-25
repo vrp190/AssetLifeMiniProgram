@@ -1,0 +1,112 @@
+<view class="page-pad">
+  <view wx:if="{{errors.length}}" class="card error-card">
+    <view wx:for="{{errors}}" wx:key="*this" class="error-line">· {{item}}</view>
+  </view>
+
+  <!-- 类型（仅新增可切换） -->
+  <view class="field" wx:if="{{!isEdit}}">
+    <view class="segment">
+      <view class="segment-item {{kind === 'asset' ? 'on' : ''}}" data-index="0" bind:tap="onKindChange">资产</view>
+      <view class="segment-item {{kind === 'wishlist' ? 'on' : ''}}" data-index="1" bind:tap="onKindChange">心愿</view>
+    </view>
+    <view class="field-hint">{{kind === 'asset' ? '已经买回来的东西（未来日期请选心愿）' : '还在计划中的东西，不计入资产统计'}}</view>
+  </view>
+
+  <view class="card">
+    <view class="field">
+      <view class="segment">
+        <view class="segment-item {{costMode === 'perDay' ? 'on' : ''}}" data-index="0" bind:tap="onCostModeChange">按天</view>
+        <view class="segment-item {{costMode === 'perUse' ? 'on' : ''}}" data-index="1" bind:tap="onCostModeChange">按次</view>
+        <view class="segment-item {{costMode === 'custom' ? 'on' : ''}}" data-index="2" bind:tap="onCostModeChange">自定义</view>
+      </view>
+      <view class="field-hint" wx:if="{{costMode === 'perDay'}}">日均成本 = 购入价格 ÷ 持有天数（当天按 1 天）</view>
+      <view class="field-hint" wx:if="{{costMode === 'perUse'}}">单次成本 = 购入价格 ÷ 使用次数</view>
+      <view class="field-hint" wx:if="{{costMode === 'custom'}}">直接使用你设定的每日成本金额</view>
+    </view>
+
+    <view class="field">
+      <text class="field-label">名称</text>
+      <input class="field-input" value="{{name}}" placeholder="例如：人体工学椅" maxlength="40" bindinput="onName" />
+    </view>
+
+    <view class="field">
+      <text class="field-label">价格（元）</text>
+      <input class="field-input" type="digit" value="{{priceText}}" placeholder="例如：2180 或 2,180" bindinput="onPrice" />
+    </view>
+
+    <view class="field">
+      <text class="field-label">{{kind === 'asset' ? '购买日期' : '计划日期'}}</text>
+      <picker mode="date" value="{{purchaseDate}}" end="{{today}}" bindchange="onPurchaseDateChange">
+        <view class="picker-value">
+          <text>{{purchaseDate}}</text>
+          <text class="arrow">选择 ›</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="field">
+      <text class="field-label">分类</text>
+      <picker mode="selector" range="{{categoryNames}}" value="{{categoryIndex}}" bindchange="onCategoryChange">
+        <view class="picker-value">
+          <text>{{categoryNames[categoryIndex]}}</text>
+          <text class="arrow">选择 ›</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="field" wx:if="{{kind === 'asset'}}">
+      <text class="field-label">状态</text>
+      <picker mode="selector" range="{{statusTitles}}" value="{{statusIndex}}" bindchange="onStatusChange">
+        <view class="picker-value">
+          <text>{{statusTitles[statusIndex]}}</text>
+          <text class="arrow">选择 ›</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="field" wx:if="{{costMode === 'perUse'}}">
+      <text class="field-label">预计使用次数</text>
+      <input class="field-input" type="number" value="{{useCountText}}" placeholder="例如：500" bindinput="onUseCount" />
+    </view>
+
+    <view class="field">
+      <text class="field-label">目标日均成本（可选）</text>
+      <picker mode="selector" range="{{targetModeTitles}}" value="{{targetModeIndex}}" bindchange="onTargetModeChange">
+        <view class="picker-value">
+          <text>{{targetModeTitles[targetModeIndex]}}</text>
+          <text class="arrow">选择 ›</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="field" wx:if="{{targetModeIndex === 2}}">
+      <text class="field-label">每日成本金额（元）</text>
+      <input class="field-input" type="digit" value="{{targetValueText}}" placeholder="例如：2.5" bindinput="onTargetValue" />
+    </view>
+
+    <view class="field" wx:if="{{targetModeIndex === 1}}">
+      <text class="field-label">目标日期</text>
+      <picker mode="date" value="{{targetDate}}" bindchange="onTargetDateChange">
+        <view class="picker-value">
+          <text>{{targetDate}}</text>
+          <text class="arrow">选择 ›</text>
+        </view>
+      </picker>
+      <view class="field-hint">到目标日期时，日均成本将降为 购入价 ÷ 持有天数</view>
+    </view>
+
+    <view class="field">
+      <text class="field-label">备注（可选）</text>
+      <textarea class="field-input notes" value="{{notes}}" placeholder="购买理由、使用感受…" maxlength="200" bindinput="onNotes" auto-height />
+    </view>
+
+    <view class="field">
+      <text class="field-label">标签（用逗号分隔，可选）</text>
+      <input class="field-input" value="{{tagsText}}" placeholder="例如：苹果，办公" bindinput="onTags" />
+    </view>
+  </view>
+
+  <view class="save-area">
+    <button class="btn-primary" bind:tap="onSave">保存</button>
+  </view>
+</view>

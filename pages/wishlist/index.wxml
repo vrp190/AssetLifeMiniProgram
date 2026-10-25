@@ -1,0 +1,35 @@
+<view class="page-pad">
+  <view class="card wish-summary">
+    <view class="wish-row">
+      <view class="wish-item">
+        <view class="wish-value">{{count}}</view>
+        <view class="wish-cap">件心愿</view>
+      </view>
+      <view class="wish-item">
+        <view class="wish-value money">{{budgetText}}</view>
+        <view class="wish-cap">预算合计</view>
+      </view>
+    </view>
+    <view class="wish-note">心愿不计入资产总额与日均成本；买回来之后在详情页点「已购入」即可转正。</view>
+  </view>
+
+  <view class="list" wx:if="{{!isEmpty}}">
+    <view wx:for="{{cards}}" wx:key="id">
+      <asset-card
+        icon="{{item.icon}}"
+        name="{{item.name}}"
+        subtitle="{{item.subtitle}}"
+        money-text="{{item.moneyText}}"
+        money-caption="{{item.moneyCaption}}"
+        bind:select="onCardTap"
+        bind:action="onCardLongPress"
+        data-id="{{item.id}}"
+      />
+    </view>
+    <view class="list-foot muted">长按卡片可快捷编辑 / 删除</view>
+  </view>
+
+  <empty-state wx:if="{{isEmpty}}" icon="⭐" title="心愿单空空的" sub="把想买的东西先记下来，等降价或冷静期过了再决定" />
+</view>
+
+<view class="fab" bind:tap="onAdd" hover-class="fab-hover">＋</view>

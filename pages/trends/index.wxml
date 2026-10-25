@@ -1,0 +1,60 @@
+<view class="page-pad" wx:if="{{!empty}}">
+  <!-- 总览 -->
+  <view class="card summary">
+    <view class="sum-row">
+      <view class="sum-item">
+        <view class="sum-value money">{{totalPurchaseText}}</view>
+        <view class="sum-cap">资产总额</view>
+      </view>
+      <view class="sum-item">
+        <view class="sum-value money accent">{{totalDailyText}}</view>
+        <view class="sum-cap">当前日均合计</view>
+      </view>
+      <view class="sum-item">
+        <view class="sum-value">{{totalCount}}</view>
+        <view class="sum-cap">件资产</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 月度购入 -->
+  <view class="card chart-card">
+    <view class="chart-head"><text class="chart-title">近 12 个月购入金额</text></view>
+    <bar-chart items="{{purchaseBars}}" />
+  </view>
+
+  <!-- 日均合计走势 -->
+  <view class="card chart-card">
+    <view class="chart-head"><text class="chart-title">日均成本合计走势</text><text class="chart-sub">截至各月末</text></view>
+    <line-chart points="{{dailyLine}}" color="#4E7D12" />
+  </view>
+
+  <!-- 分类分布 -->
+  <view class="card" wx:if="{{categoryRows.length}}">
+    <view class="chart-head"><text class="chart-title">分类分布</text><text class="chart-sub">按购入金额</text></view>
+    <view class="cat-row" wx:for="{{categoryRows}}" wx:key="category">
+      <text class="cat-icon">{{item.icon}}</text>
+      <view class="cat-main">
+        <view class="cat-line">
+          <text class="cat-name">{{item.category}} · {{item.count}} 件</text>
+          <text class="cat-total money">{{item.totalText}}</text>
+        </view>
+        <view class="cat-bar">
+          <view class="cat-fill" style="width: {{item.fraction}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 日均排行 -->
+  <view class="card" wx:if="{{ranking.length}}">
+    <view class="chart-head"><text class="chart-title">日均成本排行</text><text class="chart-sub">使用中 + 已退役</text></view>
+    <view class="rank-row" wx:for="{{ranking}}" wx:key="id">
+      <text class="rank-icon">{{item.icon}}</text>
+      <text class="rank-name ellipsis">{{item.name}}</text>
+      <text class="rank-value money">{{item.dailyText}}</text>
+    </view>
+  </view>
+</view>
+
+<empty-state wx:if="{{empty}}" icon="📈" title="还没有可统计的资产" sub="记录几件物品之后，这里会出现你的成本趋势" />

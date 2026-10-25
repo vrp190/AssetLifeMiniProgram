@@ -1,0 +1,221 @@
+/**
+ * 格物 AssetLife · 全局样式与设计规范
+ * 配色与 iOS / macOS 端 Brand.swift 保持一致。
+ */
+page {
+  /* 品牌色板 */
+  --accent: #9BE52E;        /* 强调绿：进度、按钮底 */
+  --accent-deep: #4E7D12;   /* 强调绿深色：文字与图标 */
+  --accent-soft: rgba(155, 229, 46, 0.16);
+  --bg: #F5F5F7;            /* 页面背景 */
+  --card: #FFFFFF;
+  --text: #171717;
+  --text-2: #8A8A8A;
+  --stroke: #ECECF0;
+  --danger: #C74A4A;
+  --warn: #E09F3E;          /* 已退役 */
+  --cool: #5B7C99;          /* 已卖出 */
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+/* ---- 布局 ---- */
+.page-pad {
+  padding: 24rpx 24rpx 48rpx;
+}
+.section-title {
+  font-size: 26rpx;
+  color: var(--text-2);
+  margin: 28rpx 8rpx 14rpx;
+}
+
+/* ---- 卡片 ---- */
+.card {
+  background: var(--card);
+  border-radius: 40rpx;
+  border: 1rpx solid var(--stroke);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.05);
+  padding: 28rpx;
+}
+
+/* ---- 文本 ---- */
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: var(--text);
+}
+.subtitle {
+  font-size: 24rpx;
+  color: var(--text-2);
+}
+.money {
+  font-variant-numeric: tabular-nums;
+}
+.muted {
+  color: var(--text-2);
+}
+.danger {
+  color: var(--danger);
+}
+
+/* ---- 按钮 ---- */
+.btn-primary {
+  background: var(--accent);
+  color: var(--text);
+  border-radius: 999rpx;
+  font-weight: 600;
+  font-size: 30rpx;
+  padding: 22rpx 0;
+  text-align: center;
+}
+.btn-primary::after {
+  border: none;
+}
+.btn-primary[disabled] {
+  opacity: 0.5;
+  color: var(--text);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1rpx solid var(--stroke);
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  padding: 20rpx 0;
+  text-align: center;
+}
+.btn-ghost::after {
+  border: none;
+}
+.btn-danger-ghost {
+  background: transparent;
+  color: var(--danger);
+  border: 1rpx solid rgba(199, 74, 74, 0.35);
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  padding: 20rpx 0;
+  text-align: center;
+}
+.btn-danger-ghost::after {
+  border: none;
+}
+
+/* ---- 状态徽章 ---- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 20rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 999rpx;
+  font-weight: 500;
+}
+.pill-inUse {
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+}
+.pill-retired {
+  color: var(--warn);
+  background: rgba(224, 159, 62, 0.16);
+}
+.pill-sold {
+  color: var(--cool);
+  background: rgba(91, 124, 153, 0.16);
+}
+
+/* ---- 表单 ---- */
+.field {
+  margin-bottom: 30rpx;
+}
+.field-label {
+  font-size: 26rpx;
+  color: var(--text-2);
+  margin-bottom: 12rpx;
+  display: block;
+}
+.field-input {
+  background: var(--bg);
+  border: 1rpx solid var(--stroke);
+  border-radius: 20rpx;
+  padding: 18rpx 22rpx;
+  font-size: 30rpx;
+  color: var(--text);
+}
+.field-hint {
+  font-size: 22rpx;
+  color: var(--text-2);
+  margin-top: 10rpx;
+}
+.picker-value {
+  background: var(--bg);
+  border: 1rpx solid var(--stroke);
+  border-radius: 20rpx;
+  padding: 18rpx 22rpx;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.picker-value .arrow {
+  color: var(--text-2);
+  font-size: 24rpx;
+}
+
+/* ---- 分段选择 ---- */
+.segment {
+  display: flex;
+  background: var(--bg);
+  border-radius: 18rpx;
+  padding: 6rpx;
+}
+.segment-item {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+  color: var(--text-2);
+  padding: 12rpx 0;
+  border-radius: 14rpx;
+}
+.segment-item.on {
+  background: #FFFFFF;
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+/* ---- 列表行 ---- */
+.row {
+  display: flex;
+  align-items: center;
+}
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- 空状态 ---- */
+.empty {
+  text-align: center;
+  padding: 110rpx 40rpx;
+}
+.empty-icon {
+  font-size: 96rpx;
+  margin-bottom: 24rpx;
+}
+.empty-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+.empty-sub {
+  font-size: 26rpx;
+  color: var(--text-2);
+}

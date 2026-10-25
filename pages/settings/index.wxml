@@ -1,0 +1,50 @@
+<view class="page-pad">
+  <!-- 数据 -->
+  <view class="section-title">数据</view>
+  <view class="card">
+    <view class="stat-line">
+      <text>当前 {{totalCount}} 条记录</text>
+      <text wx:if="{{hasDemo}}" class="demo-badge">含演示数据</text>
+    </view>
+    <button class="btn-primary btn-block" bind:tap="onExportFile">导出备份文件（推荐）</button>
+    <button class="btn-ghost btn-block" bind:tap="onExport">复制备份到剪贴板</button>
+    <button class="btn-ghost btn-block" bind:tap="onImport">从剪贴板导入（覆盖现有数据）</button>
+
+    <view wx:if="{{importOpen}}" class="import-box">
+      <view class="muted import-hint">确认或粘贴备份内容后导入，将覆盖当前全部数据。</view>
+      <textarea class="import-area" value="{{importText}}" bindinput="onImportText" placeholder="在此粘贴 AssetLife 备份内容（JSON 文本）" maxlength="-1" auto-height="{{false}}" />
+      <button class="btn-primary btn-block" bind:tap="onConfirmImport">覆盖导入</button>
+      <button class="btn-ghost btn-block" bind:tap="onCloseImport">取消</button>
+    </view>
+  </view>
+
+  <!-- 演示数据 -->
+  <view class="section-title">演示数据</view>
+  <view class="card">
+    <view class="demo-note">演示数据包含 7 件资产 + 3 条心愿，带专属标记，可随时一键清除；首次启动不会自动写入。</view>
+    <button wx:if="{{!hasDemo}}" class="btn-ghost btn-block" bind:tap="onLoadDemo">载入演示数据</button>
+    <button wx:else class="btn-ghost btn-block" bind:tap="onRemoveDemo">清除演示数据</button>
+  </view>
+
+  <!-- 危险操作 -->
+  <view class="section-title">危险操作</view>
+  <view class="card">
+    <button class="btn-danger-ghost btn-block" bind:tap="onClearAll">清空全部数据</button>
+  </view>
+
+  <!-- 口径说明 -->
+  <view class="section-title">成本口径</view>
+  <view class="card glossary">
+    <view class="glossary-item"><text class="glossary-key">日均成本</text><text>购入价格 ÷ 持有天数，购买当天按 1 天，未来日期同样按 1 天。</text></view>
+    <view class="glossary-item"><text class="glossary-key">单次成本</text><text>购入价格 ÷ 使用次数。</text></view>
+    <view class="glossary-item"><text class="glossary-key">资产总额</text><text>历史购入成本总和（含已卖出），不含心愿。</text></view>
+    <view class="glossary-item"><text class="glossary-key">日均合计</text><text>使用中 + 已退役资产的每日成本之和，不含已卖出与心愿。</text></view>
+    <view class="glossary-item"><text class="glossary-key">趋势</text><text>由购买日期推导（金额 ÷ 截至采样日的持有天数），持有 ≤62 天按天采样，超过按月。</text></view>
+  </view>
+
+  <view class="about">
+    <view class="about-title">格物 AssetLife</view>
+    <view class="about-sub muted">个人物品的日均成本管理 · v{{version}}</view>
+    <view class="about-sub muted">所有数据仅保存在本机，不联网、不上传、不收集任何个人信息</view>
+  </view>
+</view>

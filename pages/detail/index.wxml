@@ -1,0 +1,62 @@
+<view class="page-pad" wx:if="{{!notFound}}">
+  <!-- 头部卡片 -->
+  <view class="card head">
+    <view class="head-row">
+      <view class="icon">{{icon}}</view>
+      <view class="grow">
+        <view class="name">{{name}}</view>
+        <view class="sub">{{categoryLabel}} · {{purchaseLabel}}</view>
+      </view>
+      <text class="pill pill-{{status}}">{{statusText}}</text>
+    </view>
+    <view class="big-row">
+      <view class="big">
+        <view class="big-value money">{{dailyText}}</view>
+        <view class="big-cap">{{dailyCaption}}</view>
+      </view>
+      <view class="big">
+        <view class="big-value money">{{priceText}}</view>
+        <view class="big-cap">购入价格</view>
+      </view>
+      <view class="big">
+        <view class="big-value">{{holdingDaysText}}</view>
+        <view class="big-cap">持有情况</view>
+      </view>
+    </view>
+    <view class="target-line" wx:if="{{targetText}}">{{targetText}}</view>
+  </view>
+
+  <!-- 趋势图 -->
+  <view class="card chart-card" wx:if="{{hasTrend}}">
+    <view class="chart-head">
+      <text class="chart-title">日均成本趋势</text>
+      <text class="chart-sub">{{trendGranularityLabel}}</text>
+    </view>
+    <line-chart points="{{trendPoints}}" color="#4E7D12" />
+    <view class="chart-note">趋势由购买日期推导：金额 ÷ 截至当日的持有天数，不记录历史快照。</view>
+  </view>
+
+  <!-- 备注 / 标签 -->
+  <view class="card" wx:if="{{notes || tags.length}}">
+    <view class="block" wx:if="{{notes}}">
+      <view class="block-title">备注</view>
+      <view class="block-body">{{notes}}</view>
+    </view>
+    <view class="block" wx:if="{{tags.length}}">
+      <view class="block-title">标签</view>
+      <view class="tags">
+        <text wx:for="{{tags}}" wx:key="*this" class="tag">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="created muted">{{createdLabel}}</view>
+
+  <!-- 操作 -->
+  <view class="actions">
+    <button class="btn-ghost" bind:tap="onEdit">编辑</button>
+    <button wx:if="{{!isWish}}" class="btn-ghost" bind:tap="onStatusChange">更改状态</button>
+    <button wx:if="{{isWish}}" class="btn-primary" bind:tap="onConvert">已购入，转为资产</button>
+    <button class="btn-danger-ghost" bind:tap="onDelete">删除</button>
+  </view>
+</view>

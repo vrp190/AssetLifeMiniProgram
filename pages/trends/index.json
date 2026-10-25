@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "趋势",
+  "usingComponents": {
+    "bar-chart": "/components/bar-chart/index",
+    "line-chart": "/components/line-chart/index",
+    "empty-state": "/components/empty-state/index"
+  }
+}

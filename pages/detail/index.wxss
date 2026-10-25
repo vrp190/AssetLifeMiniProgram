@@ -1,0 +1,143 @@
+.head {
+  margin-bottom: 22rpx;
+}
+.head-row {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 30rpx;
+  background: rgba(155, 229, 46, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52rpx;
+  margin-right: 22rpx;
+}
+.grow {
+  flex: 1;
+  min-width: 0;
+  margin-right: 14rpx;
+}
+.name {
+  font-size: 34rpx;
+  font-weight: 700;
+}
+.sub {
+  font-size: 23rpx;
+  color: #8A8A8A;
+  margin-top: 8rpx;
+}
+.big-row {
+  display: flex;
+  margin-top: 28rpx;
+  text-align: center;
+}
+.big {
+  flex: 1;
+}
+.big-value {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+.big-cap {
+  font-size: 21rpx;
+  color: #8A8A8A;
+  margin-top: 6rpx;
+}
+.target-line {
+  margin-top: 22rpx;
+  background: rgba(155, 229, 46, 0.16);
+  border-radius: 16rpx;
+  padding: 14rpx 20rpx;
+  font-size: 23rpx;
+  color: #4E7D12;
+}
+.pill {
+  display: inline-block;
+  font-size: 20rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 999rpx;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.pill-inUse {
+  color: #4E7D12;
+  background: rgba(155, 229, 46, 0.16);
+}
+.pill-retired {
+  color: #E09F3E;
+  background: rgba(224, 159, 62, 0.16);
+}
+.pill-sold {
+  color: #5B7C99;
+  background: rgba(91, 124, 153, 0.16);
+}
+.pill-wishlist,
+.pill- {
+  color: #8A5EA8;
+  background: rgba(138, 94, 168, 0.14);
+}
+
+.chart-card {
+  margin-bottom: 22rpx;
+}
+.chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10rpx;
+}
+.chart-title {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.chart-sub {
+  font-size: 21rpx;
+  color: #8A8A8A;
+}
+.chart-note {
+  font-size: 20rpx;
+  color: #8A8A8A;
+  margin-top: 10rpx;
+}
+
+.block {
+  margin-bottom: 20rpx;
+}
+.block:last-child {
+  margin-bottom: 0;
+}
+.block-title {
+  font-size: 24rpx;
+  color: #8A8A8A;
+  margin-bottom: 10rpx;
+}
+.block-body {
+  font-size: 28rpx;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 22rpx;
+  color: #4E7D12;
+  background: rgba(155, 229, 46, 0.16);
+  border-radius: 999rpx;
+  padding: 8rpx 20rpx;
+  margin: 0 12rpx 12rpx 0;
+}
+.created {
+  font-size: 21rpx;
+  text-align: center;
+  margin: 8rpx 0 26rpx;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  margin-bottom: 40rpx;
+}

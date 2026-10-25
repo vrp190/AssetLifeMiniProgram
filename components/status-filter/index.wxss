@@ -1,0 +1,24 @@
+.filter {
+  width: 100%;
+  white-space: nowrap;
+}
+.filter-row {
+  display: inline-flex;
+  padding: 4rpx 2rpx;
+}
+.chip {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #8A8A8A;
+  background: #FFFFFF;
+  border: 1rpx solid #ECECF0;
+  border-radius: 999rpx;
+  padding: 10rpx 26rpx;
+  margin-right: 14rpx;
+}
+.chip.on {
+  color: #171717;
+  background: #9BE52E;
+  border-color: #9BE52E;
+  font-weight: 600;
+}

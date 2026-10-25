@@ -1,0 +1,84 @@
+<view class="page-pad">
+  <!-- 汇总卡 -->
+  <view class="card summary">
+    <view class="sum-row">
+      <view class="sum-item">
+        <view class="sum-value money">{{summary.totalPurchaseText}}</view>
+        <view class="sum-cap">资产总额</view>
+      </view>
+      <view class="sum-item">
+        <view class="sum-value money accent">{{summary.totalDailyText}}</view>
+        <view class="sum-cap">当前日均合计</view>
+      </view>
+      <view class="sum-item">
+        <view class="sum-value">{{summary.totalCount}}</view>
+        <view class="sum-cap">件资产</view>
+      </view>
+    </view>
+    <view class="status-bar" wx:if="{{summary.totalCount > 0}}">
+      <view
+        wx:for="{{statusBar}}"
+        wx:key="key"
+        class="seg {{item.cls}}"
+        style="width: {{item.fraction}}%"
+      ></view>
+    </view>
+    <view class="status-legend" wx:if="{{summary.totalCount > 0}}">
+      <text wx:for="{{statusBar}}" wx:key="key" class="legend-item {{item.count === 0 ? 'muted' : ''}}">
+        {{item.count}} 件{{item.key === 'inUse' ? '使用中' : item.key === 'retired' ? '已退役' : '已卖出'}}
+      </text>
+    </view>
+    <view class="sum-note">资产总额为历史购入成本总和（含已卖出）；日均合计不含已卖出与心愿。</view>
+  </view>
+
+  <!-- 搜索 / 筛选 / 排序 -->
+  <view class="toolbar">
+    <view class="search">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        placeholder="搜索名称、分类、标签"
+        value="{{searchText}}"
+        confirm-type="search"
+        bindinput="onSearchInput"
+      />
+      <text wx:if="{{searchText}}" class="search-clear" bind:tap="onSearchClear">✕</text>
+    </view>
+    <view class="filter-line">
+      <status-filter items="{{filterItems}}" current="{{statusFilter}}" bind:change="onFilterChange" />
+      <picker
+        class="sort-picker"
+        mode="selector"
+        range="{{sortTitles}}"
+        value="{{sortIndex}}"
+        bindchange="onSortChange"
+      >
+        <view class="sort-btn">{{sortTitles[sortIndex]}} ▾</view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 列表 -->
+  <view class="list" wx:if="{{!isEmpty}}">
+    <view wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}">
+      <asset-card
+        icon="{{item.icon}}"
+        name="{{item.name}}"
+        subtitle="{{item.subtitle}}"
+        status="{{item.status}}"
+        status-text="{{item.statusText}}"
+        money-text="{{item.moneyText}}"
+        money-caption="{{item.moneyCaption}}"
+        bind:select="onCardTap"
+        bind:action="onCardLongPress"
+        data-id="{{item.id}}"
+      />
+    </view>
+    <view class="list-foot muted">长按卡片可快捷编辑 / 删除</view>
+  </view>
+
+  <empty-state wx:if="{{isEmpty}}" icon="📦" title="{{hasAny ? '没有匹配的资产' : '还没有记录资产'}}" sub="{{hasAny ? '换个关键词或筛选条件试试' : '点右下角 ＋ 记下你的第一件物品'}}" />
+</view>
+
+<!-- 悬浮新增按钮 -->
+<view class="fab" bind:tap="onAdd" hover-class="fab-hover">＋</view>

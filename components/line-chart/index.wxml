@@ -1,0 +1,3 @@
+<view class="chart-box" wx:if="{{!empty}}">
+  <canvas id="canvas" type="2d" class="canvas"></canvas>
+</view>

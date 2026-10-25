@@ -1,0 +1,14 @@
+<view class="acard" bind:tap="onTap" bind:longpress="onLongPress">
+  <view class="icon">{{icon}}</view>
+  <view class="grow">
+    <view class="name-row">
+      <text class="name ellipsis">{{name}}</text>
+      <text wx:if="{{statusText}}" class="pill pill-{{status}}">{{statusText}}</text>
+    </view>
+    <view class="sub ellipsis">{{subtitle}}</view>
+  </view>
+  <view class="right">
+    <view class="money">{{moneyText}}</view>
+    <view class="caption">{{moneyCaption}}</view>
+  </view>
+</view>

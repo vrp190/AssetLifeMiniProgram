@@ -1,0 +1,11 @@
+<scroll-view class="filter" scroll-x enhanced show-scrollbar="{{false}}">
+  <view class="filter-row">
+    <view
+      wx:for="{{items}}"
+      wx:key="key"
+      class="chip {{item.key === current ? 'on' : ''}}"
+      data-key="{{item.key}}"
+      bind:tap="onTap"
+    >{{item.title}}</view>
+  </view>
+</scroll-view>
