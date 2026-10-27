@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 竖向柱状图：canvas 2d 自绘。
 // items: [{ label, value, valueText }]
 const device = require('../../utils/device.js')

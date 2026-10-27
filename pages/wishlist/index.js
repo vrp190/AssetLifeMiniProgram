@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 心愿清单页：想买的东西、预算合计、长按管理。
 const money = require('../../utils/money.js')
 const date = require('../../utils/date.js')

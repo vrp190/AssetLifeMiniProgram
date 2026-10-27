@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 成本计算：与 iOS / macOS 端 CostCalculator 完全相同的口径，纯函数、无副作用。
 //
 // 口径说明：

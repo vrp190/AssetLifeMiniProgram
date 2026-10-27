@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 成本算法与金额格式化：口径对齐 iOS 端 CostCalculatorTests。
 module.exports = function (ctx) {
   const cost = ctx.require('cost.js')

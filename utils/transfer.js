@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 导出 / 导入：JSON 结构与 iOS / macOS 端 ExportService 完全兼容，
 // 三端导出的备份文件可以互相导入。金额以「元」字符串、日期以 ISO8601 编码。
 

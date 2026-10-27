@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 数据仓库：增删改查 + 演示数据 + 全量替换（导入）。
 // 依赖注入的 storage 适配层，因此这份逻辑可以在 node 里完整测试。
 

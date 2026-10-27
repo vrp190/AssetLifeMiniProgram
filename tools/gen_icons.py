@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Copyright (C) 2026 AssetLife contributors
+
 """生成微信小程序图标资源：
   1) tabBar 图标（81x81 PNG，4 倍超采样后缩放保证边缘平滑）；
   2) 小程序头像（144x144 / 512x512 PNG）—— 提审时需在 mp 后台上传。

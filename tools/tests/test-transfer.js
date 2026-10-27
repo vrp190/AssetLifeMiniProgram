@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 导出 / 导入：结构与 iOS / macOS 端 ExportService 互通。
 module.exports = function (ctx) {
   const transfer = ctx.require('transfer.js')

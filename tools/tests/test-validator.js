@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 表单校验：口径对齐 iOS 端 AssetEditorViewModelTests。
 module.exports = function (ctx) {
   const validator = ctx.require('validator.js')

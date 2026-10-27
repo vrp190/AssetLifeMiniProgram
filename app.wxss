@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* Copyright (C) 2026 AssetLife contributors */
+
 /**
  * 格物 AssetLife · 全局样式与设计规范
  * 配色与 iOS / macOS 端 Brand.swift 保持一致。

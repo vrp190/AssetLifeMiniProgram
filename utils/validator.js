@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 新增 / 编辑表单校验：与 iOS 端 AssetEditorViewModel.validate 同一套规则。
 
 const money = require('./money.js')

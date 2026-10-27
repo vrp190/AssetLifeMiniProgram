@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 统计与查询：口径对齐 iOS 端 AssetListViewModelTests。
 module.exports = function (ctx) {
   const statistics = ctx.require('statistics.js')

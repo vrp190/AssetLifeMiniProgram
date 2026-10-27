@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 设置页：数据概览、备份导入导出、默认排序偏好、清空数据、口径说明。
 // 数据只存本机（wx.setStorageSync），导出为剪贴板文本 / 备份文件，与 iOS、macOS 端互通。
 const transfer = require('../../utils/transfer.js')

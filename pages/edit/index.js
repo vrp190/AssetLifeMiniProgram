@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 新增 / 编辑资产或心愿。
 // 从列表 / 心愿页进入：?mode=new&kind=asset|wishlist 或 ?mode=edit（对象经 globalData.pendingAsset 传入）。
 const categories = require('../../utils/categories.js')

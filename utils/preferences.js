@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 用户偏好：与资产数据分开存放（assetlife.settings.v1），清空数据不影响偏好。
 // 与 repository 一样依赖注入的 storage 适配层，可在 node 里直接测试。
 

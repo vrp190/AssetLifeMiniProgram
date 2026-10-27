@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 极简测试运行器：node tools/tests/run.js
 // 小程序的 utils 全部是纯 CommonJS 模块，可直接在 node 里 require 测试。
 const path = require('path')

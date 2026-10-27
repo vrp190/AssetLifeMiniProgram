@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 偏好存储：默认排序的读写、非法值回落、清空数据不影响偏好。
 module.exports = function (ctx) {
   const test = ctx.test

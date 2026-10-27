@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 演示数据：与 iOS / macOS 端 DemoDataFactory 同一组数据（7 件资产 + 3 条心愿）。
 // 明确标记 isDemoData，可在设置里一键清除；首次启动不会自动写入。
 

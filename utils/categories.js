@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 分类与图标。
 // iOS 端用 SF Symbols，小程序无法使用，这里改成 Emoji（跨平台一致、零资源体积）。
 

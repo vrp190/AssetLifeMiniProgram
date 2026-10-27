@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 资产数据结构、默认值的补齐与规范化。
 // 字段语义与 iOS / macOS 端 Asset @Model 一一对应，只是把 Decimal 换成「分」整数。
 

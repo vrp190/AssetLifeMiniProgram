@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 存储适配层：把「读写键值」这一层抽象出来，
 // 逻辑层（repository）不直接依赖 wx.*，因此可以在 node 里跑单元测试。
 

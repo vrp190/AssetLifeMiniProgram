@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 资产卡片：纯展示组件，所有字段由页面预先格式化好再传入。
 // 注意：事件名用 select / action，避免与原生 tap / longpress 冲突导致双触发。
 Component({

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 资产总览页：汇总统计 + 筛选搜索排序 + 资产卡片列表。
 const statistics = require('../../utils/statistics.js')
 const money = require('../../utils/money.js')

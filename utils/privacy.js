@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 微信「用户隐私保护指引」授权封装。
 //
 // 本小程序只涉及一类隐私接口：剪贴板（导出时写入 wx.setClipboardData、

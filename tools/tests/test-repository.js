@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 仓库 CRUD 与持久化：用内存存储适配层完整测试。
 module.exports = function (ctx) {
   const repository = ctx.require('repository.js')

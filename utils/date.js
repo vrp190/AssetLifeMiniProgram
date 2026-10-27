@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 日期工具。
 //
 // 设计约定（重要）：所有「自然日」一律使用 'yyyy-MM-dd' 字符串表示，

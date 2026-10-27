@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 趋势统计页：月度购入柱状图 + 日均合计折线 + 分类分布 + 日均排行。
 const statistics = require('../../utils/statistics.js')
 const money = require('../../utils/money.js')

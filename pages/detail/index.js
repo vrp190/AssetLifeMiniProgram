@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 资产 / 心愿详情：成本明细 + 趋势图 + 状态管理 + 删除。
 const money = require('../../utils/money.js')
 const date = require('../../utils/date.js')

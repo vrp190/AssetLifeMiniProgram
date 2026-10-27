@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 单件资产的日均成本趋势：与 iOS / macOS 端 AssetCostTrend 同一套规则。
 //
 // App 不记录历史快照，趋势由购买日期推导（金额 ÷ 截至采样日的持有天数）。

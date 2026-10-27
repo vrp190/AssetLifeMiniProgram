@@ -1,5 +1,10 @@
 # 格物 AssetLife · 微信小程序版
 
+[![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-blue)](LICENSE)
+![Platform](https://img.shields.io/badge/platform-WeChat%20Mini%20Program-07C160)
+![Tests](https://img.shields.io/badge/tests-111%20passing-brightgreen)
+![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
+
 个人物品日均成本管理工具。与 iOS / macOS 端共享同一套业务口径，数据仅保存在本机，
 **不联网、不上传、不采集任何用户信息**，三端备份格式互通。
 
@@ -38,10 +43,10 @@ AssetLifeMiniProgram/
 │   ├── index/                         资产总览（汇总 + 搜索/筛选/排序 + 列表）
 │   ├── wishlist/                      心愿清单（预算统计 + 转资产）
 │   ├── trends/                        趋势统计（月度购入、日均合计、分类、排行）
-│   ├── settings/                      设置（备份导入导出、演示数据、口径说明）
+│   ├── settings/                      设置（概览、备份导入导出与提醒、默认排序、清空数据）
 │   ├── detail/                        资产详情（成本明细 + 趋势 + 改状态）
 │   └── edit/                          新增 / 编辑表单
-├── utils/                             12 个纯逻辑模块（可在 node 中直接测试）
+├── utils/                             16 个纯逻辑模块（可在 node 中直接测试）
 │   ├── date.js                        日期全部用 'yyyy-MM-dd' 字符串
 │   ├── money.js                       金额全部用「分」整数，展示转「元」
 │   ├── cost.js                        日均成本 / 单次成本（与 CostCalculator 同口径）
@@ -52,9 +57,12 @@ AssetLifeMiniProgram/
 │   ├── categories.js                  12 个分类 + Emoji 图标
 │   ├── repository.js                  仓库层（依赖注入存储适配器）
 │   ├── storage.js                     内存 / wx 存储适配器
+│   ├── preferences.js                 偏好设置（默认排序、上次备份时间）
+│   ├── backup.js                      备份新鲜度文案（30 天提醒）
 │   ├── transfer.js                    备份导出导入（ExportPayload 三端互通）
 │   ├── privacy.js                     剪贴板隐私授权封装
-│   └── device.js                      pixelRatio（替代已废弃的 getSystemInfoSync）
+│   ├── device.js                      pixelRatio（替代已废弃的 getSystemInfoSync）
+│   └── demo.js                        演示数据工厂（仅调试，带 isDemoData 标记）
 └── tools/
     ├── gen_icons.py                   图标生成
     ├── tests/                         单元测试（111 个用例）
@@ -88,7 +96,7 @@ AssetLifeMiniProgram/
 4. **`appid` 未填写**：只能用「测试号」调试，无法真机预览与上传。
 5. 图表用 canvas 2d，需通过 `fields({node:true, size:true})` 拿到节点再取 `getContext('2d')`，
    不要用已废弃的 `wx.createCanvasContext`。
-6. 文件大小：代码 + 模板 + 样式约 127KB，全量约 176KB，远小于 2MB 上限。
+6. 文件大小：代码 + 模板 + 样式约 132KB，全量约 221KB，远小于 2MB 上限。
 
 ## 许可证
 
@@ -98,3 +106,5 @@ AssetLifeMiniProgram/
 - **商业用途**：二选一 —— ① 将衍生作品以 AGPL-3.0 开源；② 通过本仓库 Issue 取得作者的书面商业授权。
 
 详见 [LICENSING.md](LICENSING.md)。版权人：AssetLife contributors。
+
+贡献代码前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)（测试命令、`utils/` 纯逻辑约定、隐私接口注意事项）。

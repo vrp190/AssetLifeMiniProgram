@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 备份提醒文案：把「最近一次成功导出」的时间戳转成设置页展示的文字与提醒状态。
 const date = require('./date.js')
 

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 提审前工程自检：node tools/check_project.js
 // 覆盖小程序上传/审核最容易踩的硬伤：页面文件缺失、tabBar 图标规格、appid 未填、
 // require 路径失效、已废弃 API、语法错误、组件引用缺失。

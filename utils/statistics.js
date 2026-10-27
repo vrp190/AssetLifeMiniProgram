@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 列表 / 趋势页的统计与查询逻辑：与 iOS 端 AssetListViewModel、TrendsViewModel 同口径。
 
 const cost = require('./cost.js')

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 格物 AssetLife · 微信小程序版
 // 与 iOS / macOS 端同一套业务口径：
 //   - 金额以「分」为整数存储，展示时转「元」；

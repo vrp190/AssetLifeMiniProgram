@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 折线 / 面积趋势图：canvas 2d 自绘，零第三方依赖。
 // points: [{ label, value, valueText }] —— value 用于定位（元），valueText 用于标注。
 const device = require('../../utils/device.js')

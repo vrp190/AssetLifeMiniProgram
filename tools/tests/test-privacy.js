@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 // 隐私授权封装 & 设备像素比：注入桩对象即可在 node 中完整测试。
 module.exports = function (ctx) {
   const test = ctx.test
