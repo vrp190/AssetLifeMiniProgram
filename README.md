@@ -6,7 +6,7 @@
 ## 快速开始
 
 ```bash
-# 1. 核心逻辑单元测试（102 个用例，纯 node，无需微信环境）
+# 1. 核心逻辑单元测试（111 个用例，纯 node，无需微信环境）
 node tools/tests/run.js
 
 # 2. 提审前工程自检（页面/组件完整性、图标规格、appid、废弃 API、语法）
@@ -57,7 +57,7 @@ AssetLifeMiniProgram/
 │   └── device.js                      pixelRatio（替代已废弃的 getSystemInfoSync）
 └── tools/
     ├── gen_icons.py                   图标生成
-    ├── tests/                         单元测试（102 个用例）
+    ├── tests/                         单元测试（111 个用例）
     └── check_project.js                提审前工程自检
 ```
 
@@ -88,4 +88,13 @@ AssetLifeMiniProgram/
 4. **`appid` 未填写**：只能用「测试号」调试，无法真机预览与上传。
 5. 图表用 canvas 2d，需通过 `fields({node:true, size:true})` 拿到节点再取 `getContext('2d')`，
    不要用已废弃的 `wx.createCanvasContext`。
-6. 文件大小：代码 + 模板 + 样式约 120KB，全量约 136KB，远小于 2MB 上限。
+6. 文件大小：代码 + 模板 + 样式约 127KB，全量约 176KB，远小于 2MB 上限。
+
+## 许可证
+
+[AGPL-3.0](LICENSE) + 商业授权 双许可：
+
+- **非商业用途**（个人使用、学习、研究、非商业分发）：免费，遵循 AGPL-3.0 即可。
+- **商业用途**：二选一 —— ① 将衍生作品以 AGPL-3.0 开源；② 通过本仓库 Issue 取得作者的书面商业授权。
+
+详见 [LICENSING.md](LICENSING.md)。版权人：AssetLife contributors。

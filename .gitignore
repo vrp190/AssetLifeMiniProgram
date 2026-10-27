@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# 微信开发者工具生成的本地配置（含本机路径，不提交）
+project.private.config.json
+
+# node 依赖
+node_modules/
