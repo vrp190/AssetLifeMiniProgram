@@ -1,13 +1,28 @@
-// 设置页：备份导入导出、演示数据、清空数据、口径说明。
+// 设置页：数据概览、备份导入导出、默认排序偏好、清空数据、口径说明。
 // 数据只存本机（wx.setStorageSync），导出为剪贴板文本 / 备份文件，与 iOS、macOS 端互通。
 const transfer = require('../../utils/transfer.js')
 const date = require('../../utils/date.js')
+const money = require('../../utils/money.js')
+const statistics = require('../../utils/statistics.js')
+const backup = require('../../utils/backup.js')
 
 Page({
   data: {
-    totalCount: 0,
-    hasDemo: false,
-    todayText: '',
+    overview: {
+      totalCount: 0,
+      inUseCount: 0,
+      retiredCount: 0,
+      soldCount: 0,
+      wishCount: 0,
+      recordCount: 0,
+      totalPurchaseText: '¥0.00',
+      totalDailyText: '¥0.00',
+      wishBudgetText: '¥0.00'
+    },
+    backupText: '',
+    backupStale: false,
+    sortIndex: 0,
+    sortTitles: statistics.sortTitles(),
     version: '',
     // 手动导入区：剪贴板不可用时（未授权 / 读取失败）的降级入口
     importOpen: false,
@@ -15,19 +30,56 @@ Page({
   },
 
   onShow: function () {
+    this.refresh()
+  },
+
+  refresh: function () {
     const repo = getApp().repo()
+    const referenceDate = date.today()
+    const all = repo.all()
+    const summary = statistics.summary(all, referenceDate)
+    const wish = statistics.wishlistSummary(all)
+    const backupState = backup.label(getApp().prefs().lastBackupAt(), referenceDate)
     this.setData({
-      totalCount: repo.count(),
-      hasDemo: repo.hasDemo(),
-      todayText: date.fullDateLabel(date.today()),
+      overview: {
+        totalCount: summary.totalCount,
+        inUseCount: summary.inUseCount,
+        retiredCount: summary.retiredCount,
+        soldCount: summary.soldCount,
+        wishCount: wish.count,
+        recordCount: repo.count(),
+        totalPurchaseText: money.formatMoney(summary.totalPurchaseCost),
+        totalDailyText: money.formatMoney(money.round(summary.totalDailyCost)),
+        wishBudgetText: money.formatMoney(wish.budget)
+      },
+      // 没有数据时不必催备份
+      backupText: backupState.text,
+      backupStale: backupState.stale && (summary.totalCount > 0 || wish.count > 0),
+      sortIndex: statistics.sortIndex(getApp().prefs().defaultSort()),
+      sortTitles: statistics.sortTitles(),
       version: getApp().version()
     })
+  },
+
+  // 导出成功后才记录备份时间，避免用户取消导出也被当成已备份。
+  markBackedUp: function () {
+    getApp().prefs().setLastBackupAt(Date.now())
+    this.refresh()
+  },
+
+  // ---- 偏好 ----
+  onSortChange: function (event) {
+    const index = Number(event.detail.value) || 0
+    const applied = getApp().prefs().setDefaultSort(statistics.SORT_OPTIONS[index].key)
+    this.setData({ sortIndex: statistics.sortIndex(applied) })
+    wx.showToast({ title: '默认排序已更新', icon: 'none' })
   },
 
   // ---- 导出 ----
   // 剪贴板写入属于微信隐私接口，写入前须确认已同意隐私保护指引；
   // 未获授权时引导改用「导出备份文件」（wx.shareFileMessage 不涉及隐私接口）。
   onExport: function () {
+    const that = this
     const repo = getApp().repo()
     const assets = repo.raw()
     if (!assets.length) {
@@ -47,6 +99,7 @@ Page({
       wx.setClipboardData({
         data: text,
         success: function () {
+          that.markBackedUp()
           wx.showModal({
             title: '备份已复制到剪贴板',
             content: '共 ' + assets.length + ' 条记录。可粘贴到备忘录 / 微信收藏保存，或在「导入」中粘贴恢复。三端（iOS / macOS / 小程序）备份格式互通。',
@@ -77,7 +130,9 @@ Page({
       fs.writeFileSync(filePath, text, 'utf8')
       wx.shareFileMessage({
         filePath: filePath,
-        success: function () {},
+        success: function () {
+          that.markBackedUp()
+        },
         fail: function () {
           // 用户取消或环境不支持分享文件时，回退到剪贴板
           that.onExport()
@@ -163,42 +218,7 @@ Page({
         getApp().repo().replaceAll(imported)
         that.setData({ importOpen: false, importText: '' })
         wx.showToast({ title: '导入成功', icon: 'success' })
-        that.onShow()
-      }
-    })
-  },
-
-  // ---- 演示数据 ----
-  onLoadDemo: function () {
-    const that = this
-    const repo = getApp().repo()
-    if (repo.hasDemo()) {
-      wx.showToast({ title: '演示数据已存在', icon: 'none' })
-      return
-    }
-    wx.showModal({
-      title: '载入演示数据？',
-      content: '将写入 7 件资产 + 3 条心愿（带演示标记，可一键清除）。',
-      success: function (res) {
-        if (!res.confirm) return
-        const count = repo.insertDemo(date.today())
-        wx.showToast({ title: '已载入 ' + count + ' 条', icon: 'none' })
-        that.onShow()
-      }
-    })
-  },
-
-  onRemoveDemo: function () {
-    const that = this
-    const repo = getApp().repo()
-    wx.showModal({
-      title: '清除演示数据？',
-      content: '仅删除带演示标记的记录，你自己的数据不受影响。',
-      success: function (res) {
-        if (!res.confirm) return
-        const removed = repo.removeDemo()
-        wx.showToast({ title: '已清除 ' + removed + ' 条', icon: 'none' })
-        that.onShow()
+        that.refresh()
       }
     })
   },
@@ -220,7 +240,7 @@ Page({
         if (!res.confirm) return
         repo.clear()
         wx.showToast({ title: '已清空', icon: 'none' })
-        that.onShow()
+        that.refresh()
       }
     })
   }

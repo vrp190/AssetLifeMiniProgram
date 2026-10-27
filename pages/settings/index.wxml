@@ -1,11 +1,42 @@
 <view class="page-pad">
+  <!-- 概览 -->
+  <view class="section-title">概览</view>
+  <view class="card">
+    <view class="stat-grid">
+      <view class="stat-cell">
+        <text class="stat-value">{{overview.totalPurchaseText}}</text>
+        <text class="stat-label">资产总额</text>
+      </view>
+      <view class="stat-cell">
+        <text class="stat-value">{{overview.totalDailyText}}</text>
+        <text class="stat-label">日均合计</text>
+      </view>
+      <view class="stat-cell">
+        <text class="stat-value">{{overview.totalCount}}</text>
+        <text class="stat-label">资产件数</text>
+      </view>
+      <view class="stat-cell">
+        <text class="stat-value">{{overview.wishCount}}</text>
+        <text class="stat-label">心愿件数</text>
+      </view>
+    </view>
+    <view class="stat-line">
+      <text>使用中 {{overview.inUseCount}} · 已退役 {{overview.retiredCount}} · 已卖出 {{overview.soldCount}}</text>
+    </view>
+    <view wx:if="{{overview.wishCount}}" class="stat-line">
+      <text>心愿预算 {{overview.wishBudgetText}}</text>
+    </view>
+    <view class="stat-line">
+      <text>本机共 {{overview.recordCount}} 条记录（含心愿）</text>
+    </view>
+    <view class="stat-line {{backupStale ? 'stat-warn' : ''}}">
+      <text>{{backupText}}</text>
+    </view>
+  </view>
+
   <!-- 数据 -->
   <view class="section-title">数据</view>
   <view class="card">
-    <view class="stat-line">
-      <text>当前 {{totalCount}} 条记录</text>
-      <text wx:if="{{hasDemo}}" class="demo-badge">含演示数据</text>
-    </view>
     <button class="btn-primary btn-block" bind:tap="onExportFile">导出备份文件（推荐）</button>
     <button class="btn-ghost btn-block" bind:tap="onExport">复制备份到剪贴板</button>
     <button class="btn-ghost btn-block" bind:tap="onImport">从剪贴板导入（覆盖现有数据）</button>
@@ -18,12 +49,18 @@
     </view>
   </view>
 
-  <!-- 演示数据 -->
-  <view class="section-title">演示数据</view>
+  <!-- 偏好 -->
+  <view class="section-title">偏好</view>
   <view class="card">
-    <view class="demo-note">演示数据包含 7 件资产 + 3 条心愿，带专属标记，可随时一键清除；首次启动不会自动写入。</view>
-    <button wx:if="{{!hasDemo}}" class="btn-ghost btn-block" bind:tap="onLoadDemo">载入演示数据</button>
-    <button wx:else class="btn-ghost btn-block" bind:tap="onRemoveDemo">清除演示数据</button>
+    <view class="pref-row">
+      <view class="pref-text">
+        <text class="pref-title">默认排序</text>
+        <text class="pref-hint">列表页切换排序时也会同步记住</text>
+      </view>
+      <picker mode="selector" range="{{sortTitles}}" value="{{sortIndex}}" bindchange="onSortChange">
+        <view class="pref-value">{{sortTitles[sortIndex]}} ›</view>
+      </picker>
+    </view>
   </view>
 
   <!-- 危险操作 -->

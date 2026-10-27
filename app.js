@@ -8,6 +8,7 @@
 const repository = require('./utils/repository.js')
 const storage = require('./utils/storage.js')
 const privacy = require('./utils/privacy.js')
+const preferences = require('./utils/preferences.js')
 
 // 提审版本号：与开发者工具上传时填写的版本保持一致
 var VERSION = '1.0.0'
@@ -16,6 +17,7 @@ App({
   globalData: {
     repo: null,
     privacy: null,
+    prefs: null,
     // 跨页传递编辑对象的临时区（小程序页面间传复杂对象最稳妥的方式）
     pendingAsset: null,
     pendingKind: 'asset'
@@ -24,6 +26,7 @@ App({
   onLaunch: function () {
     this.globalData.repo = repository.createRepository(storage.createWXStorage(), {})
     this.globalData.privacy = privacy.createPrivacy()
+    this.globalData.prefs = preferences.createPreferences(storage.createWXStorage(), {})
   },
 
   repo: function () {
@@ -31,6 +34,14 @@ App({
       this.globalData.repo = repository.createRepository(storage.createWXStorage(), {})
     }
     return this.globalData.repo
+  },
+
+  /** 用户偏好（默认排序等），与资产数据分开存储。 */
+  prefs: function () {
+    if (!this.globalData.prefs) {
+      this.globalData.prefs = preferences.createPreferences(storage.createWXStorage(), {})
+    }
+    return this.globalData.prefs
   },
 
   /** 隐私授权检查器（剪贴板读写的统一入口） */

@@ -24,6 +24,14 @@ function sortKey(title) {
   return 'purchaseDateDesc'
 }
 
+/** 排序 key → picker 索引；未知 key 回落到第一项。 */
+function sortIndex(key) {
+  for (let i = 0; i < SORT_OPTIONS.length; i++) {
+    if (SORT_OPTIONS[i].key === key) return i
+  }
+  return 0
+}
+
 /**
  * 总览统计（只统计 kind === 'asset'）。
  *   totalCount        —— 正式资产件数（含已卖出）
@@ -194,6 +202,7 @@ module.exports = {
   SORT_OPTIONS,
   sortTitles,
   sortKey,
+  sortIndex,
   summary,
   wishlistSummary,
   sortAssets,

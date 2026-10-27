@@ -54,7 +54,10 @@ Page({
   },
 
   onShow: function () {
-    this.setData({ referenceDate: date.today() })
+    this.setData({
+      referenceDate: date.today(),
+      sortIndex: statistics.sortIndex(getApp().prefs().defaultSort())
+    })
     this.refresh()
   },
 
@@ -106,7 +109,9 @@ Page({
   },
 
   onSortChange: function (event) {
-    this.setData({ sortIndex: Number(event.detail.value) || 0 })
+    const sortIndex = Number(event.detail.value) || 0
+    this.setData({ sortIndex: sortIndex })
+    getApp().prefs().setDefaultSort(statistics.SORT_OPTIONS[sortIndex].key)
     this.refresh()
   },
 

@@ -68,7 +68,8 @@ const suites = [
   'test-validator.js',
   'test-repository.js',
   'test-transfer.js',
-  'test-privacy.js'
+  'test-privacy.js',
+  'test-preferences.js'
 ]
 
 console.log('格物 AssetLife 小程序 · 核心逻辑单元测试\n')
